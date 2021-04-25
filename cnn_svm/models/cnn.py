@@ -40,7 +40,7 @@ class CNN(tf.keras.Model):
         self.pool_layer_2 = tf.keras.layers.MaxPooling2D(strides=1, pool_size=2)
         self.flatten = tf.keras.layers.Flatten()
         self.fc_layer = tf.keras.layers.Dense(
-            units=1024, activation=tf.nn.relu, kernel_initializer="he_normal"
+            units=512, activation=tf.nn.relu, kernel_initializer="he_normal"
         )
         self.dropout_layer = tf.keras.layers.Dropout(rate=5e-1)
         self.output_layer = tf.keras.layers.Dense(units=kwargs["num_classes"])
