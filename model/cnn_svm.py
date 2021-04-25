@@ -76,8 +76,8 @@ class CNNSVM:
             second_conv_pool = self.max_pool_2x2(second_conv_activation)
 
             # Fully-connected layer (Dense Layer)
-            dense_layer_weight = self.weight_variable([7 * 7 * 64, 512])
-            dense_layer_bias = self.bias_variable([512])
+            dense_layer_weight = self.weight_variable([7 * 7 * 64, 1024])
+            dense_layer_bias = self.bias_variable([1024])
 
             second_conv_pool_flatten = tf.reshape(second_conv_pool, [-1, 7 * 7 * 64])
             dense_layer_activation = tf.nn.relu(
@@ -90,7 +90,7 @@ class CNNSVM:
             h_fc1_drop = tf.nn.dropout(dense_layer_activation, keep_prob)
 
             # Readout layer
-            readout_weight = self.weight_variable([512, num_classes])
+            readout_weight = self.weight_variable([1024, num_classes])
             readout_bias = self.bias_variable([num_classes])
 
             output = tf.matmul(h_fc1_drop, readout_weight) + readout_bias
