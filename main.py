@@ -75,21 +75,21 @@ if __name__ == "__main__":
 
     if model_choice == "1":
         model = CNN(
-            alpha=0.1,
-            batch_size=300,
+            alpha=1e-3,
+            batch_size=200,
             num_classes=num_classes,
             num_features=sequence_length,
         )
         model.train(
             checkpoint_path=args.checkpoint_path,
-            epochs=400,
+            epochs=200,
             log_path=args.log_path,
             train_data=mnist.train,
             test_data=mnist.test,
         )
     elif model_choice == "2":
         model = CNNSVM(
-            alpha=0.1,
+            alpha=1e-3,
             batch_size=300,
             num_classes=num_classes,
             num_features=sequence_length,
